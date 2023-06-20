@@ -1,0 +1,231 @@
+.wssmgk_variation_opt input[type="number"],
+.wssmgk_variation_opt input[type="text"],
+.wssmgk_variation_opt select,
+.wssmgk_variation_opt textarea {
+  width: 100%;
+  vertical-align: middle;
+  margin: 2px 0 0;
+  padding: 2px;
+}
+
+.wssmgk_select_time {
+  display: none;
+}
+select.wssmgk_variation_schedule {
+  width: 312px;
+}
+.wssmgk-alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+  font-size: 13px;
+  line-height: 21px;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 15px 25px;
+}
+
+.show_if_variation_manage_stock
+  .wssmgk_advance_option
+  p:first-child
+  .woocommerce-help-tip {
+  float: right;
+}
+
+.show_if_variation_manage_stock .wssmgk_advance_option p:first-child {
+  display: inline-block;
+}
+
+.show_if_variation_manage_stock .wssmgk_advance_option p:first-child label {
+  margin-right: 10px;
+}
+
+.wssmgk_variation_opt .wssmgk_stock_field input[type="text"] {
+  width: auto;
+}
+
+.woocommerce_variable_attributes .wssmgk_stock_check,
+.woocommerce_variable_attributes
+  .wssmgk_variation_opt
+  .wssmgk_advance_option
+  label {
+  float: left;
+  width: auto !important;
+}
+
+.woocommerce_variable_attributes
+  .wssmgk_variation_opt
+  .wssmgk_advance_option
+  label {
+  margin-right: 10px;
+  margin-top: 8px;
+}
+
+.show_if_variation_manage_stock p.form-field.wssmgk_select_time,
+.show_if_variation_manage_stock p.form-field.wssmgk_schedule_quantity_type {
+  max-width: 392px;
+  margin-left: 91px;
+  padding-left: 0 !important;
+}
+
+fieldset.form-field.wssmgkp_disable_variable_field ul.wc-radios,
+.form-field.wssmgkp_disable_field ul.wc-radios {
+  float: none !important;
+  width: 100%;
+}
+
+fieldset.form-field.wssmgkp_disable_variable_field label,
+.form-field.wssmgkp_disable_field label {
+  display: inline-block;
+  float: none !important;
+}
+
+fieldset.form-field.wssmgkp_disable_variable_field li,
+.form-field.wssmgkp_disable_field li {
+  display: inline-block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+fieldset.form-field.wssmgkp_disable_variable_field legend,
+.form-field.wssmgkp_disable_field legend {
+  float: left;
+  margin-right: 10px !important;
+  padding: 0;
+}
+
+fieldset.form-field.wssmgkp_disable_variable_field legend img,
+.form-field.wssmgkp_disable_field legend img,
+.wssmgk_advance_option .form-field.wssmgk_select_start_time img {
+  width: 20px;
+  position: relative;
+  top: 4px;
+  margin-right: 8px;
+}
+
+fieldset.form-field.wssmgkp_disable_variable_field .woocommerce-help-tip,
+.form-field.wssmgkp_disable_field .woocommerce-help-tip {
+  margin: 0;
+  position: relative;
+  top: 8px;
+  float: right;
+}
+
+fieldset.form-field.wssmgkp_disable_variable_field {
+  max-width: 500px;
+}
+
+.form-field.wssmgkp_disable_field {
+  max-width: 320px;
+}
+fieldset.form-field.wssmgkp_disable_field
+  ul
+  li:not(fieldset.form-field.wssmgkp_disable_field ul li:first-child) {
+  margin-left: 10px !important;
+}
+
+.form-field .wssmgk-alert-warning {
+  padding: 8px;
+}
+
+.form-field .wssmgk-alert-warning img {
+  width: 18px;
+  vertical-align: sub;
+}
+
+.wssmgk_schedule_quantity_type {
+  /* display: none; */
+}
+/* Pro Features Select Date */
+
+.wssmgk_advance_option .form-field.wssmgk_select_start_time input[type="text"] {
+  width: auto;
+}
+
+.wssmgk_advance_option .form-field.wsds_note.default,
+.wssmgk_advance_option .form-field.wsds_note.custom_date_and_time {
+  display: block;
+  width: max-content;
+  float: left;
+  /* color: red; */
+  margin-top: 6px;
+  margin-left: 150px;
+}
+
+.wssmgk_advance_option .form-field.wssmgk_select_start_time span {
+  float: left;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-top: 5px;
+}
+
+.wssmgk_advance_option .form-field.wssmgk_select_start_time input[disabled] {
+  opacity: 0.5;
+}
+
+.panel-wrap .woocommerce_options_panel .options_group fieldset {
+  padding: 5px 9px !important;
+  max-width: 480px;
+}
+
+.panel-wrap .woocommerce_options_panel legend {
+  margin: 0 !important;
+}
+
+.panel-wrap .form-field.wssmgkp_disable_field legend {
+  margin-right: 10px !important;
+}
+
+.show_if_variation_manage_stock.wssmgk_variation_opt fieldset {
+  margin: 12px 0;
+  font-size: 12px;
+  margin-top: 40px;
+}
+
+.show_if_variation_manage_stock.wssmgk_variation_opt legend {
+  float: left;
+  width: 150px;
+  padding: 0;
+}
+
+.show_if_variation_manage_stock.wssmgk_variation_opt
+  fieldset.form-field.wssmgkp_disable_variable_field {
+  max-width: 480px;
+}
+
+.show_if_variation_manage_stock.wssmgk_variation_opt
+  .wssmgk_advance_option
+  .form-field.wssmgk_select_start_time
+  span {
+  float: none;
+}
+.show_if_variation_manage_stock.wssmgk_variation_opt
+  span.form-field.wsds_note.wssmgk-alert-warning.wsds_note.default {
+  margin-left: 150px;
+  width: fit-content;
+}
+
+.show_if_variation_manage_stock.wssmgk_variation_opt
+  p.form-field.wssmgk_select_time {
+  max-width: 100%;
+}
+
+/* .show_if_variation_manage_stock.wssmgk_variation_opt
+  fieldset.form-field.wssmgkp_disable_variable_field
+  label {
+  margin-top: 0;
+} */
+
+.show_if_variation_manage_stock p.form-field.wssmgk_schedule_quantity_type {
+  margin-left: 150px !important;
+  max-width: max-content;
+}
+
+fieldset.form-field.wssmgkp_disable_variable_field .woocommerce-help-tip {
+  top: 1px;
+}
+
+.wssmgkp_disable_field .wc-radios,
+.wssmgkp_disable_variable_field .wc-radios {
+  opacity: 0.5;
+}
