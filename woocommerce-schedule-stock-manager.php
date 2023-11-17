@@ -3,8 +3,8 @@
 Plugin Name: WooCommerce Schedule Stock Manager
 Description: This Plugin provide you options to manage the stock quantity automatic increase throughout daily, weekly, monthly, hourly and yearly schedule type options of all your woocommerce products
 Author: Geek Code Lab
-Version: 2.5
-WC tested up to: 7.7.0
+Version: 2.6
+WC tested up to: 8.2.2
 Author URI: https://geekcodelab.com/
 */
 //do not allow direct access
@@ -43,12 +43,20 @@ function wssmgk_add_plugin_settings_link( $links ) {
 
 // ********** Be sure to use "Match case," and do UPPER and lower case seperately ****************
 
-define('WSSMGK_BUILD', '2.5');  // Used to force load of latest .js files
+define('WSSMGK_BUILD', '2.6');  // Used to force load of latest .js files
 define('WSSMGK_FILE', __FILE__); // For use in other files
 define('WSSMGK_PATH', plugin_dir_path(__FILE__));
 define('WSSMGK_URL', plugin_dir_url(__FILE__));
 
-
+/**
+ * Added HPOS support for woocommerce
+ */
+add_action( 'before_woocommerce_init', 'wssmgk_before_woocommerce_init' );
+function wssmgk_before_woocommerce_init() {
+    if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+}
 
 /* * ******************
  * Includes
