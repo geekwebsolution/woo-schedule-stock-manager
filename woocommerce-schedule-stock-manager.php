@@ -4,7 +4,7 @@ Plugin Name: WooCommerce Schedule Stock Manager
 Description: This Plugin provide you options to manage the stock quantity automatic increase throughout daily, weekly, monthly, hourly and yearly schedule type options of all your woocommerce products
 Author: Geek Code Lab
 Version: 2.6
-WC tested up to: 8.2.2
+WC tested up to: 8.3.0
 Author URI: https://geekcodelab.com/
 */
 //do not allow direct access
@@ -15,15 +15,34 @@ if (strpos(strtolower($_SERVER['SCRIPT_NAME']), strtolower(basename(__FILE__))))
 
 register_activation_hook( __FILE__, 'wssmgk_script_activation' );
 function wssmgk_script_activation() {
-	$error='required <b>woocommerce</b> plugin activate.';
-	if ( !class_exists( 'WooCommerce' ) ) {
-	   die('Plugin NOT activated: ' . $error);
-	}
-
 	if (is_plugin_active( 'woo-schedule-stock-manager-pro/woocommerce-schedule-stock-manager-pro.php' ) ) {
 		deactivate_plugins('woo-schedule-stock-manager-pro/woocommerce-schedule-stock-manager-pro.php');
    	}
 }
+
+/** Trigger an admin notice if WooCommerce is not installed.*/
+if ( ! function_exists( 'wssmgk_install_woocommerce_admin_notice' ) ) {
+	function wssmgk_install_woocommerce_admin_notice() { ?>
+		<div class="error">
+			<p>
+				<?php
+				// translators: %s is the plugin name.
+				echo esc_html( sprintf( __( '%s is enabled but not effective. It requires WooCommerce in order to work.' ), 'WooCommerce Schedule Stock Manager' ) );
+				?>
+			</p>
+		</div>
+		<?php
+	}
+}
+function wssmgk_woocommerce_constructor() {
+    // Check WooCommerce installation
+	if ( ! function_exists( 'WC' ) ) {
+		add_action( 'admin_notices', 'wssmgk_install_woocommerce_admin_notice' );
+		return;
+	}
+
+}
+add_action( 'plugins_loaded', 'wssmgk_woocommerce_constructor' );
 
 $plugin = plugin_basename(__FILE__);
 add_filter( "plugin_action_links_$plugin", 'wssmgk_add_plugin_settings_link');
