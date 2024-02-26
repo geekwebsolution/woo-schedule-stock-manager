@@ -3,9 +3,10 @@
 Plugin Name: WooCommerce Schedule Stock Manager
 Description: This Plugin provide you options to manage the stock quantity automatic increase throughout daily, weekly, monthly, hourly and yearly schedule type options of all your woocommerce products
 Author: Geek Code Lab
-Version: 2.6
-WC tested up to: 8.3.0
+Version: 2.7
+WC tested up to: 8.6.1
 Author URI: https://geekcodelab.com/
+Text Domain: woocommerce-schedule-stock-manager
 */
 //do not allow direct access
 if (strpos(strtolower($_SERVER['SCRIPT_NAME']), strtolower(basename(__FILE__)))) {
@@ -20,6 +21,11 @@ function wssmgk_script_activation() {
    	}
 }
 
+register_deactivation_hook( __FILE__, 'wssmgk_deactivation' );
+function wssmgk_deactivation() {
+    wp_clear_scheduled_hook( 'my_hourly_event' );
+}
+
 /** Trigger an admin notice if WooCommerce is not installed.*/
 if ( ! function_exists( 'wssmgk_install_woocommerce_admin_notice' ) ) {
 	function wssmgk_install_woocommerce_admin_notice() { ?>
@@ -27,7 +33,7 @@ if ( ! function_exists( 'wssmgk_install_woocommerce_admin_notice' ) ) {
 			<p>
 				<?php
 				// translators: %s is the plugin name.
-				echo esc_html( sprintf( __( '%s is enabled but not effective. It requires WooCommerce in order to work.' ), 'WooCommerce Schedule Stock Manager' ) );
+				echo esc_html( sprintf( '%s is enabled but not effective. It requires WooCommerce in order to work.', 'WooCommerce Schedule Stock Manager' ), 'woocommerce-schedule-stock-manager' );
 				?>
 			</p>
 		</div>
@@ -47,10 +53,10 @@ add_action( 'plugins_loaded', 'wssmgk_woocommerce_constructor' );
 $plugin = plugin_basename(__FILE__);
 add_filter( "plugin_action_links_$plugin", 'wssmgk_add_plugin_settings_link');
 function wssmgk_add_plugin_settings_link( $links ) {
-	$support_link = '<a href="https://geekcodelab.com/contact/" target="_blank" >' . __( 'Support' ) . '</a>'; 
+	$support_link = '<a href="https://geekcodelab.com/contact/" target="_blank" >' . __( 'Support', 'woocommerce-schedule-stock-manager' ) . '</a>'; 
 	array_unshift( $links, $support_link );
 
-    $pro_link = '<a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank" style="color:#46b450;font-weight: 600;">' . __( 'Premium Upgrade' ) . '</a>'; 
+    $pro_link = '<a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank" style="color:#46b450;font-weight: 600;">' . __( 'Premium Upgrade', 'woocommerce-schedule-stock-manager' ) . '</a>'; 
 	array_unshift( $links, $pro_link );
 
 	return $links;
@@ -62,7 +68,7 @@ function wssmgk_add_plugin_settings_link( $links ) {
 
 // ********** Be sure to use "Match case," and do UPPER and lower case seperately ****************
 
-define('WSSMGK_BUILD', '2.6');  // Used to force load of latest .js files
+define('WSSMGK_BUILD', '2.7');  // Used to force load of latest .js files
 define('WSSMGK_FILE', __FILE__); // For use in other files
 define('WSSMGK_PATH', plugin_dir_path(__FILE__));
 define('WSSMGK_URL', plugin_dir_url(__FILE__));
@@ -80,13 +86,10 @@ function wssmgk_before_woocommerce_init() {
 /* * ******************
  * Includes
  * ****************** */
-//function to run on activation 
- 
+//function to run on activation  
 require_once WSSMGK_PATH . 'library/class-admin.php';
 require_once WSSMGK_PATH . 'library/class-schedule.php';
 
 //  Initialize plugin settings and hooks ... 
-
-// register_activation_hook( __FILE__,  array('wssmgk_auto_stock_manager','wssmgk_register_activation' ));
 wssmgk_auto_stock_manager::wssmgk_setup();
 wssmgk_schedule_stock_manager::wssmgk_shedule_setup();

@@ -44,8 +44,8 @@ class wssmgk_auto_stock_manager {
 		woocommerce_wp_checkbox( array(
 			'id'      => 'wssmgk_schedule_mode',
 			'value'   => get_post_meta( get_the_ID(), 'wssmgk_schedule_mode', true ),
-			'label'   => 'Schedule Stock Manage',
-			'description' => 'Enable to auto add stock quantity as per you choose Schedule Type',
+			'label'   => __('Schedule Stock Manage','woocommerce-schedule-stock-manager'),
+			'description' => __('Enable to auto add stock quantity as per you choose Schedule Type','woocommerce-schedule-stock-manager')
 		) );
 		echo '<div class="wssmgk_advance_option" '.$display.'>';
 		// Recurrence Type
@@ -53,9 +53,9 @@ class wssmgk_auto_stock_manager {
 		array( 
 			'id'      => 'wssmgk_schedule',
 			'class'   =>  'wssmgk_variation_schedule',
-			'label'   => __( 'Schedule Type', 'woocommerce' ), 
+			'label'   => __( 'Schedule Type', 'woocommerce-schedule-stock-manager' ), 
 			'desc_tip'    => 'true',
-			'description' => __( 'This will be executed on a specific interval', 'woocommerce' ), 
+			'description' => __( 'This will be executed on a specific interval', 'woocommerce-schedule-stock-manager' ), 
 			'options' =>$recurrence_type,
 			'value'=>get_post_meta( get_the_ID(), 'wssmgk_schedule', true )
 			)
@@ -64,12 +64,13 @@ class wssmgk_auto_stock_manager {
 		woocommerce_wp_text_input( 
 			array( 
 				'id'          => 'wssmgk_stock', 
-				'label'       => __( 'Stock quantity', 'woocommerce' ), 
+				'label'       => __( 'Stock quantity', 'woocommerce-schedule-stock-manager' ), 
 				'desc_tip'    => 'true',
 				'class'       => 'wssmgk_stock_check',
 				'type'		  => 'number',
-				'description' => __( 'This Stock Quanity will be added on main stock as per you chosen Schedule Type', 'woocommerce' ),
-				'value'       => get_post_meta( get_the_ID(), 'wssmgk_stock', true )
+				'description' => __( 'This Stock Quanity will be added on main stock as per you chosen Schedule Type', 'woocommerce-schedule-stock-manager' ),
+				'value'       => get_post_meta( get_the_ID(), 'wssmgk_stock', true ),
+				'custom_attributes' => array( "min" => 0, "oninput" => "this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" )
 			)
 		);
 		if($wssmgk_schedule=='wssmgk_custom_date')
@@ -92,29 +93,29 @@ class wssmgk_auto_stock_manager {
 			<input type="text" id="wssmgkp_mn" class="wssmgkp_mn" name="wssmgkp_mn" placeholder="MM" value="" size="2" maxlength="2" autocomplete="off" disabled>
 			<span>GMT</span>
 			<?php $now = time(); ?>
-			<span class="form-field wsds_note wssmgk-alert-warning wsds_note default"><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i>The Start DateTime option is available in <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version Only.</a>&nbsp;&nbsp;<b>By default, it is start with current time.</b></i></span>
-				<span class="form-field wsds_note wssmgk-alert-warning custom_date_and_time" <?php echo $wssmgk_schedule_display; ?>><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i>Custom Date and Time option is available on <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version</a></i></span>
+			<span class="form-field wsds_note wssmgk-alert-warning wsds_note default"><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i><?php echo esc_html__('The Start DateTime option is available in','woocommerce-schedule-stock-manager'); ?> <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version Only.</a>&nbsp;&nbsp;<b><?php echo esc_html__('By default, it is start with current time.','woocommerce-schedule-stock-manager'); ?></b></i></span>
+			<span class="form-field wsds_note wssmgk-alert-warning custom_date_and_time" <?php echo $wssmgk_schedule_display; ?>><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i><?php echo esc_html__('Custom Date and Time option is available on','woocommerce-schedule-stock-manager'); ?> <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version</a></i></span>
 		</fieldset>	
 		<?php
 		// Schedule quantity type
 		woocommerce_wp_radio(
 			array(
 				'id' => 'wssmgkp_disable',
-				'label' => __('<img src="' .WSSMGK_URL .'/library/assets/images/crown.png" alt="crown icon">Schedule quantity type', 'woocommerce'), 
+				'label' => __('<img src="' .WSSMGK_URL .'/library/assets/images/crown.png" alt="crown icon">Schedule quantity type', 'woocommerce-schedule-stock-manager'), 
 				'class' => 'wssmgkp_schedule_qty_type_check', 
 				'options' => array(
-					'add_stock_quantity' => __('Add Stock Quantity', 'woocommerce'), 
-					'update_stock_quantity' => __('Update Stock Quantity', 'woocommerce')
+					'add_stock_quantity' => __('Add Stock Quantity', 'woocommerce-schedule-stock-manager'), 
+					'update_stock_quantity' => __('Update Stock Quantity', 'woocommerce-schedule-stock-manager')
 				),
 				'desc_tip'    => 'true',
-				'description' => __( 'This will add or update schedule quantity to stock quntity. default this will add schedule quntity to stock quantity', 'woocommerce' ),
+				'description' => __( 'This will add or update schedule quantity to stock quntity. default this will add schedule quntity to stock quantity', 'woocommerce-schedule-stock-manager' ),
 				'value'       => 'add_stock_quantity'
 			)
 		);
 		?>
 			
 		<p class="form-field wssmgk_schedule_quantity_type">
-			<span class="form-field wsds_note wssmgk-alert-warning"><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i>Update Stock Quantity option is available on <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version</a>&nbsp;&nbsp;<b>By default it will Add Stock quantity.</b></i></span>
+			<span class="form-field wsds_note wssmgk-alert-warning"><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i><?php echo esc_html__('Update Stock Quantity option is available on','woocommerce-schedule-stock-manager'); ?> <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version</a>&nbsp;&nbsp;<b><?php echo esc_html__('By default it will Add Stock quantity.','woocommerce-schedule-stock-manager'); ?></b></i></span>
 		</p>
 		<?php
 		echo '</div></div>';
@@ -196,9 +197,9 @@ class wssmgk_auto_stock_manager {
 		array( 
 			'id'      => 'wssmgk_schedule[' . $variation->ID . ']',
 			'class'   =>  'wssmgk_variation_schedule',
-			'label'   => __( 'Schedule Type', 'woocommerce' ),
+			'label'   => __( 'Schedule Type', 'woocommerce-schedule-stock-manager' ),
 			'desc_tip'    => 'true',
-			'description' => __( 'This will be executed on a specific interval', 'woocommerce' ),
+			'description' => __( 'This will be executed on a specific interval', 'woocommerce-schedule-stock-manager' ),
 			'options' =>$recurrence_type,
 			'value'=>get_post_meta( $variation->ID, 'wssmgk_schedule', true )
 			)
@@ -207,13 +208,13 @@ class wssmgk_auto_stock_manager {
 		woocommerce_wp_text_input( 
 			array( 
 				'id'          => 'wssmgk_stock[' . $variation->ID . ']',
-				'label'       => __( 'Stock quantity', 'woocommerce' ),
+				'label'       => __( 'Stock quantity', 'woocommerce-schedule-stock-manager' ),
 				'desc_tip'    => 'true',
 				'class'       => 'wssmgk_stock_check',
 				'type'		  => 'number',
-				'description' => __( 'This Stock Quanity will be added on main stock as per you chosen Schedule Type', 'woocommerce' ),
+				'description' => __( 'This Stock Quanity will be added on main stock as per you chosen Schedule Type', 'woocommerce-schedule-stock-manager' ),
 				'value'       => get_post_meta( $variation->ID, 'wssmgk_stock', true ),
-				
+				'custom_attributes' => array( "min" => 0, "oninput" => "this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" )
 			)
 		);
 		if($wssmgk_schedule=='wssmgk_custom_date')
@@ -236,8 +237,8 @@ class wssmgk_auto_stock_manager {
 			<input type="text" id="wssmgkp_mn[<?php esc_attr_e($variation->ID); ?>]" class="wssmgkp_mn" name="wssmgkp_mn" placeholder="MM" value="" size="2" maxlength="2" autocomplete="off" disabled>
 			<span>GMT</span>
 			<?php $now = time(); ?>
-			<span class="form-field wsds_note wssmgk-alert-warning wsds_note default"><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i>The Start DateTime option is available in <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version Only.</a>&nbsp;&nbsp;<b>By default, it is start with current time.</b></i></span>
-			<span class="form-field wsds_note wssmgk-alert-warning custom_date_and_time" <?php echo $wssmgk_schedule_display; ?>><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i>Custom Date and Time option is available on <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version</a></i></span>
+			<span class="form-field wsds_note wssmgk-alert-warning wsds_note default"><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i><?php echo esc_html__('The Start DateTime option is available in','woocommerce-schedule-stock-manager'); ?> <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version Only.</a>&nbsp;&nbsp;<b><?php echo esc_html__('By default it will Add Stock quantity.','woocommerce-schedule-stock-manager'); ?></b></i></span>
+			<span class="form-field wsds_note wssmgk-alert-warning custom_date_and_time" <?php echo $wssmgk_schedule_display; ?>><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i><?php echo esc_html__('Custom Date and Time option is available on','woocommerce-schedule-stock-manager'); ?> <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version</a></i></span>
 		</fieldset>	
 		<?php
 		// Schedule quantity type
@@ -245,19 +246,19 @@ class wssmgk_auto_stock_manager {
 			array(
 				'id' => 'wssmgkp_disable_variable',
 				'class' => 'wssmgkp_schedule_qty_type_check', 
-				'label' => __('<img src="' .WSSMGK_URL .'/library/assets/images/crown.png" alt="crown icon">Schedule quantity type', 'woocommerce'), 
+				'label' => __('<img src="' .WSSMGK_URL .'/library/assets/images/crown.png" alt="crown icon">Schedule quantity type', 'woocommerce-schedule-stock-manager'), 
 				'options' => array(
-					'add_stock_quantity' => __('Add Stock Quantity', 'woocommerce'), 
-					'update_stock_quantity' => __('Update Stock Quantity', 'woocommerce')
+					'add_stock_quantity' => __('Add Stock Quantity', 'woocommerce-schedule-stock-manager'), 
+					'update_stock_quantity' => __('Update Stock Quantity', 'woocommerce-schedule-stock-manager')
 				),
 				'desc_tip'    => 'true',
-				'description' => __( 'This will add or update schedule quantity to stock quntity. default this will add schedule quntity to stock quantity', 'woocommerce' ),
+				'description' => __( 'This will add or update schedule quantity to stock quntity. default this will add schedule quntity to stock quantity', 'woocommerce-schedule-stock-manager' ),
 				'value'       => 'add_stock_quantity'
 			)
 		);
 		?>
 		<p class="form-field wssmgk_schedule_quantity_type">
-			<span class="form-field wsds_note wssmgk-alert-warning"><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i>Update Stock Quantity option is available on <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version</a>&nbsp;&nbsp;<b>By default it will Add Stock quantity.</b></i></span>
+			<span class="form-field wsds_note wssmgk-alert-warning"><img src="<?php echo WSSMGK_URL .'/library/assets/images/info_icon.png';?>" alt="info icon"> <b>Note:</b> <i><?php echo esc_html__('Update Stock Quantity option is available on','woocommerce-schedule-stock-manager'); ?> <a href="https://geekcodelab.com/wordpress-plugins/woocommerce-schedule-stock-manager-pro/" target="_blank">Pro Version</a>&nbsp;&nbsp;<b><?php echo esc_html__('By default it will Add Stock quantity.','woocommerce-schedule-stock-manager'); ?></b></i></span>
 		</p>
 		<?php
 		echo '</div></div>';

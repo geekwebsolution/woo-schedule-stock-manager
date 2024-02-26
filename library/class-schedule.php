@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Utility functions for the plugin
  *
@@ -52,64 +51,64 @@ class wssmgk_schedule_stock_manager
 		// Add a Every minute interval.
 		$schedules['wssmgk_every_minute'] = array(
 			'interval' => 60,
-			'display'  => __('Every Minute'),
+			'display'  => __('Every Minute','woocommerce-schedule-stock-manager'),
 		);
 		// Add a Every Hourly interval.
 		$schedules['wssmgk_hourly'] = array(
 			'interval' => 3600,
-			'display'  => __('Hourly'),
+			'display'  => __('Hourly','woocommerce-schedule-stock-manager'),
 		);
 		// Add a Twice Daily interval.
 		$schedules['wssmgk_twicedaily'] = array(
 			'interval' => 43200,
-			'display'  => __('Twice Daily (Every 12 Hour)'),
+			'display'  => __('Twice Daily (Every 12 Hour)','woocommerce-schedule-stock-manager'),
 		);
 		// Add a Every Day interval.
 		$schedules['wssmgk_every_day'] = array(
 			'interval' => 86400,
-			'display'  => __('Daily (Every 24 Hour)'),
+			'display'  => __('Daily (Every 24 Hour)','woocommerce-schedule-stock-manager'),
 		);
 
 		// Add a Every Two Days interval.
 		$schedules['wssmgk_every_two_days'] = array(
 			'interval' => 172800,
-			'display'  => __('Every Two Days (Every 48 Hour)'),
+			'display'  => __('Every Two Days (Every 48 Hour)','woocommerce-schedule-stock-manager'),
 		);
 		// Add a weekly interval.
 		$schedules['wssmgk_weekly'] = array(
 			'interval' => 604800,
-			'display'  => __('Once Weekly (Every 7 Days)'),
+			'display'  => __('Once Weekly (Every 7 Days)','woocommerce-schedule-stock-manager'),
 		);
 
 		// Add a  Twice Monthly interval.
 		$schedules['wssmgk_twicemonthly'] = array(
 			'interval' => 1296000,
-			'display'  => __('Twice Monthly (Every 15 Days)'),
+			'display'  => __('Twice Monthly (Every 15 Days)','woocommerce-schedule-stock-manager'),
 		);
 
 		// Add a Monthly interval.
 		$schedules['wssmgk_monthly'] = array(
 			'interval' => 2592000,
-			'display'  => __('Monthly (Every 30 Days)'),
+			'display'  => __('Monthly (Every 30 Days)','woocommerce-schedule-stock-manager'),
 		);
 
 		// Add a Yearly interval.
 		$schedules['wssmgk_yearly'] = array(
 			'interval' => 31536000,
-			'display'  => __('Yearly (Every 365 Days)'),
+			'display'  => __('Yearly (Every 365 Days)','woocommerce-schedule-stock-manager'),
 		);
 		return $schedules;
 	}
 	static function get_schedule_type()
 	{
-		$options[''] = __('Select a value', 'woocommerce'); // default value
+		$options[''] = __('Select a value', 'woocommerce-schedule-stock-manager'); // default value
 		$recurrence = wp_get_schedules();
 		foreach ($recurrence as $key => $type) {
 			if (strpos($key, 'wssmgk') !== false) {
 				$options[$key] = $type['display'];
 			}
 		}
-		$options['wssmgk_custom_date'] = __('Custom Date (Custom Date Time)', 'woocommerce');
+		$options['wssmgk_custom_date'] = __('Custom Date (Custom Date Time)', 'woocommerce-schedule-stock-manager');
 		return $options;
 	}
 	static function get_schedule_time()

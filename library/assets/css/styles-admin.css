@@ -5,7 +5,6 @@
   width: 100%;
   vertical-align: middle;
   margin: 2px 0 0;
-  padding: 2px;
 }
 
 .wssmgk_select_time {
@@ -66,6 +65,13 @@ select.wssmgk_variation_schedule {
   max-width: 392px;
   margin-left: 91px;
   padding-left: 0 !important;
+}
+
+select#wssmgk_schedule{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0 8px;
 }
 
 fieldset.form-field.wssmgkp_disable_variable_field ul.wc-radios,
@@ -132,10 +138,6 @@ fieldset.form-field.wssmgkp_disable_field
   width: 18px;
   vertical-align: sub;
 }
-
-.wssmgk_schedule_quantity_type {
-  /* display: none; */
-}
 /* Pro Features Select Date */
 
 .wssmgk_advance_option .form-field.wssmgk_select_start_time input[type="text"] {
@@ -147,7 +149,6 @@ fieldset.form-field.wssmgkp_disable_field
   display: block;
   width: max-content;
   float: left;
-  /* color: red; */
   margin-top: 6px;
   margin-left: 150px;
 }
@@ -209,12 +210,6 @@ fieldset.form-field.wssmgkp_disable_field
   p.form-field.wssmgk_select_time {
   max-width: 100%;
 }
-
-/* .show_if_variation_manage_stock.wssmgk_variation_opt
-  fieldset.form-field.wssmgkp_disable_variable_field
-  label {
-  margin-top: 0;
-} */
 
 .show_if_variation_manage_stock p.form-field.wssmgk_schedule_quantity_type {
   margin-left: 150px !important;

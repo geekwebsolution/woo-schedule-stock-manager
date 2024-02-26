@@ -25,7 +25,6 @@ jQuery(document).ready(function () {
 
     jQuery('body').on('click', '.wssmgkp_disable_field .wc-radios,.wssmgkp_disable_variable_field .wc-radios', function () {
         jQuery(this).parents(".wssmgk_advance_option").find("p.wssmgk_schedule_quantity_type").show();
-        console.log("click fdredf");
     });
 
     /* schedule stock manage event */
@@ -40,14 +39,11 @@ jQuery(document).ready(function () {
 
     /* show pro note on radio button click */
     jQuery('body').on('click', '.wssmgk_variation_opt input[type="radio"]', function () {
-        console.log("click fired");
         var sch_qty_type = jQuery('input[name="wssmgkp_disable"]:checked').val();
         var sch_qty_type_var = jQuery('input[name="wssmgkp_disable_variable"]:checked').val();
         if (sch_qty_type == 'update_stock_quantity' || sch_qty_type_var == 'update_stock_quantity') {
-            console.log("cond true");
             jQuery(this).parents('.wssmgk_advance_option').find('.wssmgk_schedule_quantity_type').show();
         } else {
-            console.log("cond false");
             jQuery(this).parents('.wssmgk_advance_option').find('.wssmgk_schedule_quantity_type').hide();
         }
     });
