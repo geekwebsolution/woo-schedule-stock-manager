@@ -2,11 +2,11 @@
 Contributors: rajkakadiya, rvadhel
 Donate link: https://paypal.me/rvadhel
 Tags: Schedule stock manage, variable product schedule stock manage, simple product schedule stock manage, simple product schedule type, variable product schedule type, simple product stock quantity, variable product stock quantity, stock quantity by schedule type
-Requires PHP: 5.2.4
-Requires at least: 3.0.1
-Tested up to: 6.4.1
-WC tested up to: 8.3.0
-Stable tag: 2.6
+Requires PHP: 7.4
+Requires at least: 6.4
+Tested up to: 6.4.2
+WC tested up to: 8.6.1
+Stable tag: 2.7
 
 This Plugin provide you options to manage the stock quantity automatic increase throughout daily, weekly, monthly, hourly and yearly schedule type options of all your woocommerce products, scheduling stock manage with automatic increasing stock quantity. 
 You will have the flexibility to schedule stock manage for both variation and simple product by schedule type daily, monthly with increasing stock quantity. 
@@ -71,6 +71,9 @@ After Plugin Active go to Products-> Add new -> Inventory (tab).
 7. Schedule Stock Manage options on Variation product
 
 == Changelog ==
+= 2.7 =
+ Fixed bugs
+
 = 2.6 =
  Added woocommerce HPOS support.
  Tested up to 6.4 wordpress version.
