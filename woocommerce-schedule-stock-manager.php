@@ -21,6 +21,11 @@ function wssmgk_script_activation() {
    	}
 }
 
+register_deactivation_hook( __FILE__, 'wssmgk_deactivation' );
+function wssmgk_deactivation() {
+    wp_clear_scheduled_hook( 'my_hourly_event' );
+}
+
 /** Trigger an admin notice if WooCommerce is not installed.*/
 if ( ! function_exists( 'wssmgk_install_woocommerce_admin_notice' ) ) {
 	function wssmgk_install_woocommerce_admin_notice() { ?>
