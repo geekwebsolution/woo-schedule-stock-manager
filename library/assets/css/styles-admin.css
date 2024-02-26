@@ -138,10 +138,6 @@ fieldset.form-field.wssmgkp_disable_field
   width: 18px;
   vertical-align: sub;
 }
-
-.wssmgk_schedule_quantity_type {
-  /* display: none; */
-}
 /* Pro Features Select Date */
 
 .wssmgk_advance_option .form-field.wssmgk_select_start_time input[type="text"] {
@@ -153,7 +149,6 @@ fieldset.form-field.wssmgkp_disable_field
   display: block;
   width: max-content;
   float: left;
-  /* color: red; */
   margin-top: 6px;
   margin-left: 150px;
 }
