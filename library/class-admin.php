@@ -31,13 +31,17 @@ class wssmgk_auto_stock_manager {
 		$schedule_mode=get_post_meta( get_the_ID(), 'wssmgk_schedule_mode', true );
 		$wssmgk_schedule=get_post_meta( get_the_ID(), 'wssmgk_schedule', true );
 		
+		$required = "";
+		
 		if($schedule_mode=='yes')
 		{
 			$display="style='display:block'";
+			$required = "required";
 		}
 		else
 		{
 			$display="style='display:none'";
+			$required = "";
 		}
 		//Auto Manage Stock
 		echo '<div class="stock_fields show_if_simple wssmgk_variation_opt">';
@@ -70,7 +74,7 @@ class wssmgk_auto_stock_manager {
 				'type'		  => 'number',
 				'description' => __( 'This Stock Quanity will be added on main stock as per you chosen Schedule Type', 'woocommerce-schedule-stock-manager' ),
 				'value'       => get_post_meta( get_the_ID(), 'wssmgk_stock', true ),
-				'custom_attributes' => array( "min" => 0, "oninput" => "this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" )
+				'custom_attributes' => array( "min" => 0, "oninput" => "this.value = !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null", "required" => $required )
 			)
 		);
 		if($wssmgk_schedule=='wssmgk_custom_date')

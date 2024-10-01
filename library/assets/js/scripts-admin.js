@@ -47,4 +47,21 @@ jQuery(document).ready(function () {
             jQuery(this).parents('.wssmgk_advance_option').find('.wssmgk_schedule_quantity_type').hide();
         }
     });
+
+
+    if (jQuery('#wssmgk_schedule_mode').is(':checked')) {
+        jQuery('#wssmgk_stock').prop('required',true);
+    } else {
+        jQuery('#wssmgk_stock').removeAttr('required');
+    }
+
+    // On checkbox change, toggle the required attribute
+    jQuery('#wssmgk_schedule_mode').change(function() {
+        if (jQuery(this).is(':checked')) {
+            jQuery('#wssmgk_stock').prop('required',true);
+        } else {
+            jQuery('#wssmgk_stock').removeAttr('required');
+        }
+    });
+
 });
