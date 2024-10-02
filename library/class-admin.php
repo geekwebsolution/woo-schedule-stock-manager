@@ -193,7 +193,7 @@ class wssmgk_auto_stock_manager
 	{
 		$recurrence_type = wssmgk_schedule_stock_manager::get_schedule_type();
 		//Auto Manage Stock
-		echo $schedule_mode = get_post_meta($variation->ID, 'wssmgk_schedule_mode', true);
+		$schedule_mode = get_post_meta($variation->ID, 'wssmgk_schedule_mode', true);
 		$wssmgk_schedule = get_post_meta($variation->ID, 'wssmgk_schedule', true);
 		$custom_attr = array(
 			"min" => 0,
