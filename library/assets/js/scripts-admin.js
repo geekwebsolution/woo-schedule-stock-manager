@@ -49,19 +49,14 @@ jQuery(document).ready(function () {
     });
 
 
-    if (jQuery('#wssmgk_schedule_mode').is(':checked')) {
-        jQuery('#wssmgk_stock').prop('required',true);
-    } else {
-        jQuery('#wssmgk_stock').removeAttr('required');
-    }
-
     // On checkbox change, toggle the required attribute
-    jQuery('#wssmgk_schedule_mode').change(function() {
+
+    jQuery('body').on('change', '.add-required', function () {
+        var input = jQuery(this).parents('.wssmgk_variation_opt').find('.wssmgk_stock_check');
         if (jQuery(this).is(':checked')) {
-            jQuery('#wssmgk_stock').prop('required',true);
+            input.prop('required', true);
         } else {
-            jQuery('#wssmgk_stock').removeAttr('required');
+            input.removeAttr('required');
         }
     });
-
 });
