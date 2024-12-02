@@ -6,7 +6,7 @@ Requires PHP: 7.4
 Requires at least: 6.4
 Tested up to: 6.4.2
 WC tested up to: 8.6.1
-Stable tag: 2.7
+Stable tag: 2.8
 
 This Plugin provide you options to manage the stock quantity automatically increase throughout daily, weekly, monthly, hourly and yearly
 
@@ -70,6 +70,11 @@ After Plugin Active go to Products-> Add new -> Inventory (tab).
 7. Schedule Stock Manage options on Variation product
 
 == Changelog ==
+
+= 2.8 =
+ Fix Bug
+ Added auto updated function
+
 = 2.7 =
  Fixed bugs
 
